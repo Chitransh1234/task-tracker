@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './TaskList.css';
 
-export default function TaskList({ tasks, onDelete, onUpdate }) {
+export default function TaskList({ tasks, onUpdate, onDelete }) {
   const [editIndex, setEditIndex] = useState(null);
   const [editedName, setEditedName] = useState("");
   const [editedPriority, setEditedPriority] = useState("Medium");

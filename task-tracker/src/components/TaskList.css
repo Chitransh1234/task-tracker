@@ -1,60 +1,77 @@
+.task-list {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
 .task-card {
   background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  margin: 0.5rem 0;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(60,72,88,0.08);
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: opacity 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #e5e7eb;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 16px rgba(60,72,88,0.14);
+  transform: translateY(-2px) scale(1.01);
 }
 
 .task-card.hide {
   opacity: 0.5;
 }
 
-.task-card .priority {
-  background: #f5f5f5;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 0.85em;
-  margin-left: 0.5rem;
-}
-
 .task-card.highlight {
-  color: #b71c1c;
+  border-left: 5px solid #e53935;
+  background: #fff5f5;
 }
 
-.task-item {
+.task-info {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f7f7f7;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  border-left: 4px solid #007bff;
+  flex-direction: column;
 }
 
-.task-item.high {
-  border-left-color: #dc3545;
-}
-
-.task-item.medium {
-  border-left-color: #ffc107;
-}
-
-.task-item.low {
-  border-left-color: #28a745;
-}
-
-.task-name {
+.task-title {
   font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
 }
 
 .task-priority {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #374151;
+  border-radius: 6px;
+  padding: 2px 10px;
   font-size: 0.9em;
-  color: #666;
+  margin-top: 2px;
+}
+
+.task-actions button {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin-left: 0.5rem;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.task-actions button:hover {
+  background: #e0e7ef;
+}
+
+.task-actions .delete-btn {
+  color: #e53935;
+  background: #fff0f0;
+}
+
+.task-actions .delete-btn:hover {
+  background: #ffeaea;
 }
