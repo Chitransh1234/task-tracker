@@ -1,3 +1,32 @@
+.task-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity 0.2s;
+}
+
+.task-card.hide {
+  opacity: 0.5;
+}
+
+.task-card .priority {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.85em;
+  margin-left: 0.5rem;
+}
+
+.task-card.highlight {
+  color: #b71c1c;
+}
+
 .task-item {
   display: flex;
   justify-content: space-between;

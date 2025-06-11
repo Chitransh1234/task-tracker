@@ -4,6 +4,7 @@ import TaskList from "./components/TaskList";
 import SearchBar from "./components/SearchBar";
 import RuleBuilder from "./components/RuleBuilder";
 import { evaluateRules } from "./utils/ruleEngine";
+import './App.css';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -90,8 +91,8 @@ function App() {
       <h1>📝 Task Tracker</h1>
 
       {updatedWarnings.length > 0 && (
-        <div style={{ background: "#ffebcc", padding: "10px", marginBottom: "1rem", color: "#b05a00" }}>
-          <strong>Warning:</strong> {updatedWarnings.join(", ")}
+        <div className="warning">
+          ⚠️ {updatedWarnings.join(", ")}
         </div>
       )}
 

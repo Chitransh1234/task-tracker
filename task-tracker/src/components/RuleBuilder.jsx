@@ -1,67 +1,71 @@
 import React, { useState } from "react";
+import './RuleBuilder.css';
 
-const fields = ["name", "priority"];
-const conditions = ["contains", "equals"];
-const actions = ["highlightRed", "hide", "warnIfTooMany", "sortToTop"];
+const fields = [
+  { value: "name", label: "Task Name" },
+  { value: "priority", label: "Priority" },
+  // Add more fields as needed
+];
 
-export default function RuleBuilder({ rules, setRules }) {
-  const [field, setField] = useState("name");
-  const [condition, setCondition] = useState("contains");
+const conditions = [
+  { value: "contains", label: "contains" },
+  { value: "equals", label: "equals" },
+  // Add more conditions as needed
+];
+
+const actions = [
+  { value: "highlightRed", label: "Highlight Red" },
+  { value: "hide", label: "Hide Task" },
+  { value: "sortToTop", label: "Move to Top" },
+  { value: "warnIfTooMany", label: "Warn if too many" },
+  // Add more actions as needed
+];
+
+function RuleBuilderComponent({ rules, setRules }) {
+  const [field, setField] = useState(fields[0].value);
+  const [condition, setCondition] = useState(conditions[0].value);
   const [value, setValue] = useState("");
-  const [action, setAction] = useState("highlightRed");
+  const [action, setAction] = useState(actions[0].value);
 
-  const addRule = () => {
-    const newRule = { field, condition, value, action };
-    setRules([...rules, newRule]);
+  const handleAddRule = () => {
+    if (!value) return;
+    setRules([
+      ...rules,
+      { field, condition, value, action }
+    ]);
     setValue("");
   };
 
-  const deleteRule = (index) => {
-    const updated = [...rules];
-    updated.splice(index, 1);
-    setRules(updated);
-  };
-
   return (
-    <div style={{ marginTop: "2rem" }}>
-      <h2>Rule Builder</h2>
-      <div>
-        <select value={field} onChange={(e) => setField(e.target.value)}>
-          {fields.map((f) => (
-            <option key={f} value={f}>{f}</option>
-          ))}
+    <div className="rule-builder">
+      <h3>Rule Builder</h3>
+      <div className="rule-form">
+        <select value={field} onChange={e => setField(e.target.value)}>
+          {fields.map(f => <option key={f.value} value={f.value}>{f.label}</option>)}
         </select>
-        <select value={condition} onChange={(e) => setCondition(e.target.value)}>
-          {conditions.map((c) => (
-            <option key={c} value={c}>{c}</option>
-          ))}
+        <select value={condition} onChange={e => setCondition(e.target.value)}>
+          {conditions.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
         </select>
         <input
           type="text"
+          placeholder="Value"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Enter value"
+          onChange={e => setValue(e.target.value)}
         />
-        <select value={action} onChange={(e) => setAction(e.target.value)}>
-          {actions.map((a) => (
-            <option key={a} value={a}>{a}</option>
-          ))}
+        <select value={action} onChange={e => setAction(e.target.value)}>
+          {actions.map(a => <option key={a.value} value={a.value}>{a.label}</option>)}
         </select>
-        <button onClick={addRule}>Add Rule</button>
+        <button onClick={handleAddRule}>Add Rule</button>
       </div>
-
-      {rules.length > 0 && (
-        <ul style={{ marginTop: "1rem" }}>
-          {rules.map((r, i) => (
-            <li key={i}>
-              <strong>{r.field}</strong> {r.condition} <em>"{r.value}"</em> → {r.action}
-              <button onClick={() => deleteRule(i)} style={{ marginLeft: "8px" }}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {rules.map((rule, idx) => (
+          <li key={idx}>
+            If <b>{rule.field}</b> <b>{rule.condition}</b> <b>{rule.value}</b>, then <b>{rule.action}</b>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
+
+export default RuleBuilderComponent;

@@ -1,0 +1,26 @@
+.rule-builder {
+  margin-top: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.rule-builder h3 {
+  margin-top: 0;
+}
+
+.rule-builder .rule-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.rule-builder ul {
+  padding-left: 1.2rem;
+}
+
+.rule-builder li {
+  margin-bottom: 0.5rem;
+}
