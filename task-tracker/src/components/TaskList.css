@@ -1,0 +1,31 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f7;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border-left: 4px solid #007bff;
+}
+
+.task-item.high {
+  border-left-color: #dc3545;
+}
+
+.task-item.medium {
+  border-left-color: #ffc107;
+}
+
+.task-item.low {
+  border-left-color: #28a745;
+}
+
+.task-name {
+  font-weight: 600;
+}
+
+.task-priority {
+  font-size: 0.9em;
+  color: #666;
+}

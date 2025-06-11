@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './TaskList.css';
 
 export default function TaskList({ tasks, onDelete, onUpdate }) {
   const [editIndex, setEditIndex] = useState(null);
@@ -21,18 +22,34 @@ export default function TaskList({ tasks, onDelete, onUpdate }) {
     setEditIndex(null);
   };
 
+  const getPriorityIcon = (priority) => {
+    switch (priority) {
+      case "High":
+        return "🔥";
+      case "Medium":
+        return "⚡";
+      case "Low":
+        return "🌱";
+      default:
+        return "🔰";
+    }
+  };
+
   return (
     <div>
       <h2>Task List</h2>
       {tasks.length === 0 && <p>No tasks found.</p>}
       {tasks.map((task, index) => {
         const isEditing = index === editIndex;
+        const isUrgent = task.name.toLowerCase().includes("urgent");
         const style = {
           border: "1px solid #ccc",
           padding: "10px",
           marginBottom: "8px",
           backgroundColor:
-            task.actions?.includes("highlightRed") ? "#ffdddd" : "#fff",
+            task.actions?.includes("highlightRed") || isUrgent
+              ? "#ffdddd"
+              : "#fff",
         };
 
         return (
@@ -56,9 +73,22 @@ export default function TaskList({ tasks, onDelete, onUpdate }) {
               </>
             ) : (
               <>
-                <strong>{task.name}</strong> ({task.priority})
-                <button onClick={() => handleEdit(task, index)} style={{ marginLeft: 8 }}>Edit</button>
-                <button onClick={() => onDelete(index)} style={{ marginLeft: 8 }}>Delete</button>
+                <strong style={{ color: isUrgent ? "red" : "black" }}>
+                  {task.name}
+                </strong>{" "}
+                ({getPriorityIcon(task.priority)} {task.priority})
+                <button
+                  onClick={() => handleEdit(task, index)}
+                  style={{ marginLeft: 8 }}
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => onDelete(index)}
+                  style={{ marginLeft: 8 }}
+                >
+                  Delete
+                </button>
               </>
             )}
           </div>
