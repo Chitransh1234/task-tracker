@@ -28,11 +28,17 @@ function App() {
     localStorage.setItem("rules", JSON.stringify(rules));
   }, [rules]);
 
-  // Apply rules and generate warnings
+  // Apply rules and generate warnings/conflicts
   const applyRules = () => {
     const updatedWarnings = [];
     const updatedTasks = tasks.map((task) => {
       const actions = evaluateRules(task, rules);
+      // Detect conflicting actions
+      if (actions.includes("highlightRed") && actions.includes("hide")) {
+        updatedWarnings.push(
+          `Conflict: Task "${task.name}" has both 'highlightRed' and 'hide' actions.`
+        );
+      }
       return { ...task, actions };
     });
 
