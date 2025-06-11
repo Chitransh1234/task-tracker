@@ -1,77 +1,117 @@
-.task-list {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 0;
+.tasklist-container {
+  max-width: 500px;
+  margin: 32px auto;
+  padding: 16px;
+  background: #f5faff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
 }
 
-.task-card {
-  background: #fff;
+.tasklist-title {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 24px;
+}
+
+.tasklist-empty {
+  text-align: center;
+  color: #888;
+}
+
+.tasklist-taskbox {
+  border: 1px solid #bdbdbd;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(60,72,88,0.08);
-  margin-bottom: 1.2rem;
-  padding: 1.2rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: box-shadow 0.2s, transform 0.2s;
-  border: 1px solid #e5e7eb;
-}
-
-.task-card:hover {
-  box-shadow: 0 4px 16px rgba(60,72,88,0.14);
-  transform: translateY(-2px) scale(1.01);
-}
-
-.task-card.hide {
-  opacity: 0.5;
-}
-
-.task-card.highlight {
-  border-left: 5px solid #e53935;
-  background: #fff5f5;
-}
-
-.task-info {
+  padding: 16px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
   display: flex;
   flex-direction: column;
 }
 
-.task-title {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.2rem;
+.tasklist-taskbox-urgent {
+  background: #ffeaea;
+  border-color: #e57373;
 }
 
-.task-priority {
-  display: inline-block;
-  background: #f3f4f6;
-  color: #374151;
-  border-radius: 6px;
-  padding: 2px 10px;
-  font-size: 0.9em;
-  margin-top: 2px;
+.tasklist-edit-row,
+.tasklist-view-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.task-actions button {
-  background: #f3f4f6;
+.tasklist-input,
+.tasklist-select {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #bdbdbd;
+  font-size: 1em;
+}
+
+.tasklist-btn {
+  margin-left: 8px;
   border: none;
   border-radius: 6px;
   padding: 6px 14px;
-  margin-left: 0.5rem;
-  font-size: 0.95em;
   cursor: pointer;
-  transition: background 0.15s;
+  background: #1976d2;
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.2s;
 }
 
-.task-actions button:hover {
-  background: #e0e7ef;
+.tasklist-btn:hover {
+  background: #1565c0;
 }
 
-.task-actions .delete-btn {
+.tasklist-btn-delete {
+  background: #e53935;
+}
+
+.tasklist-btn-delete:hover {
+  background: #b71c1c;
+}
+
+.tasklist-btn-cancel {
+  background: #757575;
+}
+
+.tasklist-btn-cancel:hover {
+  background: #424242;
+}
+
+.tasklist-taskname {
+  color: #1976d2;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.tasklist-taskname-urgent {
   color: #e53935;
-  background: #fff0f0;
 }
 
-.task-actions .delete-btn:hover {
-  background: #ffeaea;
+.tasklist-priority {
+  font-weight: 400;
+  color: #555;
+  margin-left: 8px;
+}
+
+.tasklist-btn-next {
+  margin-left: 8px;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 28px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(67, 233, 123, 0.18);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.tasklist-btn-next:hover {
+  background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+  transform: translateY(-2px) scale(1.04);
 }
